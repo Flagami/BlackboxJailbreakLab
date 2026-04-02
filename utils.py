@@ -10,28 +10,29 @@ from configs import LOG_LEVEL
 
 def setup_logger(name: str = "app_logger", log_file: str = "./app.log", level=LOG_LEVEL):
     """
-    设置一个高级 logger，支持文件和控制台输出，并显示详细的出错路径、函数名等。
-    :param name: logger 的名称
-    :param log_file: 日志保存的文件路径
-    :param level: 日志等级，默认是 logging.INFO
-    :return: logger 实例
+    Setup an advanced logger with file and console output, showing detailed error paths and function names.
+
+    :param name: Logger name
+    :param log_file: Log file path
+    :param level: Log level, defaults to LOG_LEVEL from configs
+    :return: Logger instance
     """
     logger = logging.getLogger(name)
     logger.setLevel(level)
-    logger.propagate = False  # 防止重复打印
+    logger.propagate = False  # Prevent duplicate logging
 
     formatter = logging.Formatter(
         fmt='[%(asctime)s] [%(levelname)s] [%(filename)s:%(lineno)d:%(funcName)s] %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S'
     )
 
-    # 控制台 Handler（带颜色）
+    # Console handler
     if not any(isinstance(h, logging.StreamHandler) for h in logger.handlers):
         console_handler = logging.StreamHandler(sys.stdout)
         console_handler.setFormatter(formatter)
         logger.addHandler(console_handler)
 
-    # 文件 Handler（自动轮转）
+    # File handler with rotation
     if log_file and not any(isinstance(h, RotatingFileHandler) for h in logger.handlers):
         os.makedirs(os.path.dirname(log_file), exist_ok=True)
         file_handler = RotatingFileHandler(log_file, maxBytes=5 * 1024 * 1024, backupCount=3)

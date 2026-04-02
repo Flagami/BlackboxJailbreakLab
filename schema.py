@@ -4,16 +4,16 @@ from typing import Dict, List, Any, Optional
 from dataclasses import dataclass
 from configs import MAX_CONVERSATION_TURNS
 
-# ============= 数据模型定义 =============
+# ============= Data Model Definitions =============
 
 class AttackType(Enum):
-    """攻击类型枚举 TODO:Add more attack type base on the demand"""
-    JAILBREAK = "black_box"  # 越狱攻击
-    PROMPT_INJECTION = "black_box"  # 提示注入
-    ADVERSARIAL = "black_box"  # 对抗性攻击
-    SOCIAL_ENGINEERING = "black_box"  # 社会工程学
-    ROLEPLAY = "black_box"  # 角色扮演
-    MULTI_TURN = "black_box"  # 多轮对话攻击
+    """Attack type enumeration"""
+    JAILBREAK = "black_box"  # Jailbreak attack
+    PROMPT_INJECTION = "black_box"  # Prompt injection
+    ADVERSARIAL = "black_box"  # Adversarial attack
+    SOCIAL_ENGINEERING = "black_box"  # Social engineering
+    ROLEPLAY = "black_box"  # Role play
+    MULTI_TURN = "black_box"  # Multi-turn conversation attack
     OVERLOAD="black_box"
     ICA="black_box"
     REWRITE="black_box"
@@ -23,11 +23,11 @@ class AttackType(Enum):
     DEEP_INCEPTION="black_box"
     GPT4_CIPHER="black_box"
     RANDOM_SEARCH="black_box"
-    TAP="black_box"  # 白盒攻击
-    PAIR = "black_box" # 白盒攻击
+    TAP="black_box"  # White-box attack
+    PAIR = "black_box" # White-box attack
 
 class AttackResult(Enum):
-    """攻击结果枚举"""
+    """Attack result enumeration"""
     SUCCESS = "success"
     PARTIAL_SUCCESS = "partial_success"
     FAILED = "failed"
@@ -35,7 +35,7 @@ class AttackResult(Enum):
 
 @dataclass
 class ConversationTurn:
-    """单轮对话记录"""
+    """Single conversation turn record"""
     role: str  # user/assistant
     content: str
     turn_number: int
@@ -44,18 +44,18 @@ class ConversationTurn:
 
 @dataclass
 class AttackRequest:
-    """攻击请求参数"""
-    attack_method: str  # 攻击手段名称
-    attack_model: str   # 攻击模型名称
-    target_model: str   # 被攻击模型名称
-    attack_payload: Optional[str] = None  # 自定义攻击载荷
-    max_turns: int = MAX_CONVERSATION_TURNS  # 最大对话轮数
+    """Attack request parameters"""
+    attack_method: str  # Attack method name
+    attack_model: str   # Attack model name
+    target_model: str   # Target model name
+    attack_payload: Optional[str] = None  # Custom attack payload
+    max_turns: int = MAX_CONVERSATION_TURNS  # Max conversation turns
     temperature: float = 0.7
     custom_params: Dict[str, Any] = None
 
 @dataclass
 class AttackResponse:
-    """攻击响应结果"""
+    """Attack response result"""
     request_id: str
     attack_method: str
     attack_model: str
@@ -63,9 +63,9 @@ class AttackResponse:
     conversation_history_target_model: List[ConversationTurn]
     conversation_history_attacker_model: List[ConversationTurn]
     attack_result: AttackResult
-    success_probability: float  # 攻破概率 0-1
-    vulnerability_score: float  # 漏洞分数 0-100
-    execution_time: float  # 执行时间（秒）
+    success_probability: float  # Success probability 0-1
+    vulnerability_score: float  # Vulnerability score 0-100
+    execution_time: float  # Execution time (seconds)
     metadata: Dict[str, Any]
 
 if __name__ == '__main__':
