@@ -118,22 +118,22 @@ curl -X POST http://127.0.0.1:8000/attack \
 
 ## Attack Methods
 
-| Method | Key | Type | Description |
-|---|---|---|---|
-| Jailbreak | `jailbreak` | Iterative | Classic jailbreak prompt templates, refined each turn |
-| Prompt Injection | `prompt_injection` | Iterative | Injects adversarial instructions into context |
-| Role Play | `roleplay` | Iterative | Instructs the model to adopt a persona without safety filters |
-| Overload | `overload` | One-round | Appends random characters to overwhelm input filters |
-| ICA | `ica` | One-round | In-context attack using carefully crafted examples |
-| Rewrite | `rewrite` | Iterative | Reformulates the harmful request using subjunctive mood |
-| Past Tense | `past_tense` | Iterative | Rephrases requests in hypothetical past tense |
-| ReNeLLM | `rene_llm` | Iterative | Scenario-nesting attack with LLM-assisted reformulation |
-| Art Prompt | `art_prompt` | Iterative | Embeds the harmful request inside an artistic framing |
-| Deep Inception | `deep_inception` | Iterative | Multi-layer nested role-play (dream-within-a-dream style) |
-| GPT4 Cipher | `gpt4_cipher` | Iterative | Encodes requests using ASCII shift cipher |
-| PAIR | `pair` | Iterative | Prompt Automatic Iterative Refinement (white-box style) |
-| TAP | `tap` | Iterative | Tree of Attacks with Pruning |
-| Random Search | `random_search` | Iterative | Randomly samples and mutates attack prompts |
+| Method | Key | Type | Description | Paper | URL |
+|---|---|---|---|---|---|
+| Jailbreak | `jailbreak` | Iterative | Classic jailbreak prompt templates, refined each turn | "Do Anything Now": Characterizing and Evaluating In-The-Wild Jailbreak Prompts on Large Language Models | [arXiv:2308.03825](https://arxiv.org/abs/2308.03825) |
+| Prompt Injection | `prompt_injection` | Iterative | Injects adversarial instructions into context | Ignore Previous Prompt: Attack Techniques For Language Models | [arXiv:2211.09527](https://arxiv.org/abs/2211.09527) |
+| Role Play | `roleplay` | Iterative | Instructs the model to adopt a persona without safety filters | Jailbroken: How Does LLM Safety Training Fail? | [arXiv:2307.02483](https://arxiv.org/abs/2307.02483) |
+| Overload | `overload` | One-round | Appends random characters to overwhelm input filters | InfoFlood: Jailbreaking Large Language Models with Information Overload | [arXiv:2506.12274](https://arxiv.org/abs/2506.12274) |
+| ICA | `ica` | One-round | In-context attack using carefully crafted examples | Jailbreak and Guard Aligned Language Models with Only Few In-Context Demonstrations | [arXiv:2310.06387](https://arxiv.org/abs/2310.06387) |
+| Rewrite | `rewrite` | Iterative | Reformulates the harmful request using subjunctive mood | Rewrite to Jailbreak: Discover Learnable and Transferable Implicit Harmfulness Instruction | [arXiv:2502.11084](https://arxiv.org/abs/2502.11084) |
+| Past Tense | `past_tense` | Iterative | Rephrases requests in hypothetical past tense | Does Refusal Training in LLMs Generalize to the Past Tense? | [arXiv:2407.11969](https://arxiv.org/abs/2407.11969) |
+| ReNeLLM | `rene_llm` | Iterative | Scenario-nesting attack with LLM-assisted reformulation | A Wolf in Sheep's Clothing: Generalized Nested Jailbreak Prompts can Fool Large Language Models Easily | [arXiv:2311.08268](https://arxiv.org/abs/2311.08268) |
+| Art Prompt | `art_prompt` | Iterative | Embeds sensitive words as ASCII art to bypass safety filters | ArtPrompt: ASCII Art-based Jailbreak Attacks against Aligned LLMs | [arXiv:2402.11753](https://arxiv.org/abs/2402.11753) |
+| Deep Inception | `deep_inception` | Iterative | Multi-layer nested role-play (dream-within-a-dream style) | DeepInception: Hypnotize Large Language Model to Be Jailbreaker | [arXiv:2311.03191](https://arxiv.org/abs/2311.03191) |
+| GPT4 Cipher | `gpt4_cipher` | Iterative | Encodes requests using Caesar cipher and instructs the model to decode | GPT-4 Is Too Smart To Be Safe: Stealthy Chat with LLMs via Cipher | [arXiv:2308.06463](https://arxiv.org/abs/2308.06463) |
+| PAIR | `pair` | Iterative | Prompt Automatic Iterative Refinement (white-box style) | Jailbreaking Black Box Large Language Models in Twenty Queries | [arXiv:2310.08419](https://arxiv.org/abs/2310.08419) |
+| TAP | `tap` | Iterative | Tree of Attacks with Pruning | Tree of Attacks: Jailbreaking Black-Box LLMs Automatically | [arXiv:2312.02119](https://arxiv.org/abs/2312.02119) |
+| Random Search | `random_search` | Iterative | Randomly samples and mutates attack prompts | Jailbreaking Leading Safety-Aligned LLMs with Simple Adaptive Attacks | [arXiv:2404.02151](https://arxiv.org/abs/2404.02151) |
 
 ---
 
