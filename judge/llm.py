@@ -1,5 +1,4 @@
 from typing import Dict, List, Any, Optional, Tuple
-# 自定义库
 from schema import ConversationTurn,AttackType,AttackResult
 from judge.base import ResultJudge
 from model.base import BaseLLM
@@ -8,7 +7,6 @@ from utils import setup_logger
 
 logger = setup_logger(__name__)
 class LLMJudge(ResultJudge):
-    """基于大模型的判定器"""
 
     def __init__(self, judge_model_interface: BaseLLM, judge_model: str):
         self.judge_model_interface = judge_model_interface
@@ -17,8 +15,7 @@ class LLMJudge(ResultJudge):
     async def judge_attack_result(self,
                                   conversation_history: List[ConversationTurn],
                                   attack_type: AttackType) : #-> Tuple[AttackResult, float, float]
-        """使用大模型判定攻击结果"""
-        # 构造判定prompt
+
         conversation_text = "\n".join([
             f"{turn.role}: {turn.content}"
             for turn in conversation_history
@@ -49,7 +46,6 @@ class LLMJudge(ResultJudge):
                 messages, self.judge_model, temperature=0.1
             )
 
-            # 解析JSON响应
             import json
             result = json.loads(response)
 
@@ -60,6 +56,5 @@ class LLMJudge(ResultJudge):
             return attack_result, success_prob, vuln_score
 
         except Exception as e:
-            logging.error(f"LLM判定失败: {e}")
-            # 回退到简单判定
+            logging.error(f"LLM judge failed: {e}")
             return AttackResult.ERROR, 0.0, 0.0

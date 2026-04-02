@@ -1,7 +1,6 @@
 # encoding: utf-8
 from typing import Dict, List, Any
 from dataclasses import dataclass, field
-# 三方库
 from attacker.base import BaseAttacker, BaseAttackerConfig
 from model.base import BaseLLMConfig, LLMGenerateConfig
 from model.silicon_flow_api import SiliconFlowLLMConfig

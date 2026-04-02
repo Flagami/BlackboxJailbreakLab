@@ -2,11 +2,9 @@ from abc import ABC, abstractmethod
 from typing import Dict, List, Union, Any, Tuple
 from dataclasses import dataclass, field
 import concurrent.futures
-# 自定义库
 from utils import setup_logger
 
 logger = setup_logger(__name__)
-# ============= 模型调用接口 =============
 
 
 @dataclass

@@ -3,7 +3,6 @@
 
 from typing import Dict, List, Union, Any
 from dataclasses import dataclass, field
-# 自定义库
 from judge.base import BaseJudge, BaseJudgeConfig
 from utils import is_assistant_turn
 from configs import DEFAULT_REFUSAL_KEYWORDS

@@ -132,7 +132,9 @@ internal
 result*/
 
 # --- data and outputdata ---
+test/
 data/
+!attacker/data/          # but DO NOT ignore the attacker/data folder
 perturbed_output/
 
 # --- model weight---

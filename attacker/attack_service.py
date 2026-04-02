@@ -362,12 +362,10 @@ class AttackService:
         return llm_class(config=config)
 
     def _should_stop_conversation(self, response: str, turn: int, max_turns: int,attack_method:str) -> bool:
-        """判断是否应该停止对话"""
         if turn >= max_turns - 1:
             logger.info(f"Reach max turns")
             return True
 
-        # 如果模型明确拒绝，可以提前停止# TODO：丰富拒绝列表
         if any(indicator in response.lower() for indicator in DEFAULT_REFUSAL_KEYWORDS):
             logger.debug(f"Find refusal words in response:{response}\n And the words list is:{DEFAULT_REFUSAL_KEYWORDS}")
             return False

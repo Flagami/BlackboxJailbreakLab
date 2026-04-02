@@ -84,7 +84,7 @@ class GPT4CipherAttacker(BaseAttacker):
 
         original_prompt = messages[-1]["content"]
 
-        # TODO：适配更多的cipher手段 unicode\gbk\utf\atbash\morse\unchange
+        # TODO：more cipher methods: unicode\gbk\utf\atbash\morse\unchange
         caesar_cipher = self.caesar_cipher(text=original_prompt, shift=self.shift_number)
 
         messages[-1]["content"] = self.reform_prompt(caesar_cipher=caesar_cipher)

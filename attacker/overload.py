@@ -3,7 +3,6 @@
 from typing import Dict, List, Any
 from dataclasses import dataclass, field
 from utils import is_user_turn
-# 自定义库
 import random
 import string
 from attacker.base import BaseAttacker, BaseAttackerConfig

@@ -9,7 +9,7 @@ from model.interface import ModelInterface
 from utils import is_user_turn, setup_logger, logger
 from judge.rule import RuleBasedJudge
 
-# TODO：经过深入鉴定，属于白盒模，需要调用模型的tokenizer权重参数，和continual generation
+# TODO：in fact this is a whitebox，tokenizer and weights are needed for continual generation
 
 RETRY = 10000
 
@@ -193,7 +193,6 @@ class PairAttackerConfig(BaseAttackerConfig):
     attacker_name: str = field(default=None)
     attack_type: any = field(default=None)
 
-    # 初始化攻击模型和目标模型
     attack_llm_config: BaseLLMConfig = field(default_factory=SiliconFlowLLMConfig)
     target_llm_config: BaseLLMConfig = field(default_factory=SiliconFlowLLMConfig)
 
@@ -252,7 +251,7 @@ class PairAttacker(BaseAttacker):
         # pair_judge_config = parse_nested_config(
         #     pair_judge_config_class, pair_judge_config_dict
         # )
-        # TODO:修改为动态的judge
+
         self.pair_judge = RuleBasedJudge()
 
         # set goal and target str

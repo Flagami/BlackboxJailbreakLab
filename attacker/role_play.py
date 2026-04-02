@@ -5,7 +5,6 @@ from utils import setup_logger
 logger = setup_logger(__name__)
 
 class RolePlayAttacker(BaseAttacker):
-    """角色扮演攻击器"""
 
     def __init__(self, config: BaseAttackerConfig):
         super().__init__(config)
@@ -33,17 +32,14 @@ class RolePlayAttacker(BaseAttacker):
             messages: List[Dict[str, str]],
             **kwargs
     ) -> List[Dict[str, str]]:
-        """执行角色扮演攻击"""
         if messages is None:
             messages = []
         else:
             assert messages[-1]["role"] != "assistant"
 
-        # 选择角色扮演场景
         scenario_index = kwargs.get('scenario_index', 0)
         scenario = self.roleplay_scenarios[scenario_index % len(self.roleplay_scenarios)]
 
-        # 构造角色扮演prompt
         roleplay_prompt = f"""角色设定：{scenario['role']}
 
 {scenario['description']}
@@ -51,12 +47,10 @@ class RolePlayAttacker(BaseAttacker):
 现在开始角色扮演。"""
 
         if messages and messages[-1]["role"] == "user":
-            # 在现有对话前添加角色设定
             original_content = messages[-1]["content"]
             modified_content = f"{roleplay_prompt}\n\n用户问题：{original_content}"
             modified_messages = messages[:-1] + [{"role": "user", "content": modified_content}]
         else:
-            # 直接添加角色扮演prompt
             modified_messages = messages + [{"role": "user", "content": roleplay_prompt}]
 
         return modified_messages

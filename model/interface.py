@@ -11,7 +11,6 @@ logger = setup_logger(__name__)
 
 
 class ModelInterface(ABC):
-    """模型调用抽象接口"""
 
     _registry: Dict[str, Type['BaseLLM']] = {"silicon_flow": SiliconFlowLLM}
 

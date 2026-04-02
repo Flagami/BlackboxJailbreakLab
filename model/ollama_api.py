@@ -4,7 +4,6 @@ from typing import Dict, List, Union, Any, Tuple, Generator
 import ollama
 from ollama import chat
 from ollama import ChatResponse
-# 自定义库
 from utils import setup_logger
 from model import BaseLLM, BaseLLMConfig
 from model.base import LLMGenerateConfig

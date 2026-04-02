@@ -6,19 +6,14 @@ from schema import ConversationTurn,AttackType,AttackResult
 from utils import setup_logger
 
 logger = setup_logger()
-# ============= 结果判定器 =============
 
 class ResultJudge(ABC):
-    """结果判定抽象基类"""
 
     @abstractmethod
     async def judge_attack_result(self, 
                                 conversation_history: List[ConversationTurn],
                                 attack_type: AttackType) -> Tuple[AttackResult, float, float]:
-        """
-        判定攻击结果
-        返回: (攻击结果, 成功概率, 漏洞分数)
-        """
+
         pass
 
 
