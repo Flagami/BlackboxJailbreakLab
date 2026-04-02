@@ -1,0 +1,9 @@
+httpx
+openai
+fastapi
+uvicorn
+ollama
+numpy
+pandas
+openpyxl
+requests

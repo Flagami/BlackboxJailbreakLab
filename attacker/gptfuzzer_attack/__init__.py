@@ -1,0 +1,1 @@
+from attacker.gptfuzzer_attack.gptfuzz import GPTFuzzAttacker, GPTFuzzAttackerConfig
